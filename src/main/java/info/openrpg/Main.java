@@ -1,6 +1,6 @@
 package info.openrpg;
 
-import info.openrpg.telegram.Bot;
+import info.openrpg.telegram.OpenRpgBot;
 import info.openrpg.telegram.Credentials;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
@@ -28,7 +28,7 @@ public class Main {
                     .botName(properties.getProperty("bot.name"))
                     .token(properties.getProperty("bot.token"))
                     .build();
-            telegramBotsApi.registerBot(new Bot(botCredentials));
+            telegramBotsApi.registerBot(new OpenRpgBot(botCredentials, properties));
         } catch (TelegramApiRequestException e) {
             logger.warning(e.getMessage());
         } catch (FileNotFoundException e) {
